@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <h2 class="text-center">User List</h2>
   <table class="table table-stripped">
     <thead>
@@ -19,4 +19,32 @@
       </tr>
     </tbody>
   </table>
+</div> -->
+
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="15%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let user of users">
+      <mat-card class="mat-elevation-z4">
+        <mat-card-header>
+          <mat-card-title>{{user.name}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image
+          src="https://media-cldnry.s-nbcnews.com/image/upload/MSNBC/Components/Photo/_new/110505-chernobyl-ferriswheel-pripyat.jpg" />
+        <mat-card-content>
+          <style>
+            .ellipsis {
+              text-overflow: ellipsis;
+            }
+          </style>
+          <p class="overflow ellipsis">{{user.email}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="updateUser(user.id)" class="btn btn-info">Update</button>
+          <button mat-button (click)="deleteUser(user.id)" class="btn btn-danger">Delete</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
 </div>
+
+

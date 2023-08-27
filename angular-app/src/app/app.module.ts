@@ -8,6 +8,12 @@ import { UserCreateComponent } from './user-create/user-create.component';
 import { FormsModule } from '@angular/forms';
 import { UserUpdateComponent } from './user-update/user-update.component';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from "@angular/material/card";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatButtonModule } from "@angular/material/button";
+
 
 @NgModule({
   declarations: [
@@ -20,7 +26,12 @@ import { UserUpdateComponent } from './user-update/user-update.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FlexLayoutModule,
+    FormsModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatButtonModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
