@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
+import { MovieListComponent } from './movie-list/movie-list.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { MatButtonModule } from "@angular/material/button";
     AppComponent,
     UserListComponent,
     UserCreateComponent,
-    UserUpdateComponent
+    UserUpdateComponent,
+    MovieListComponent
   ],
   imports: [
     BrowserModule,

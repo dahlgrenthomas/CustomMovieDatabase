@@ -1,4 +1,4 @@
-package com.example.MovieDatabase;
+package com.example.MovieDatabase.Movie;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,14 +6,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class User {
+public class Movie {
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
   private Integer id;
 
-  private String name;
+  private String poster;
 
-  private String email;
+  private String title;
+
+  private String overview;
+
+
 
   public Integer getId() {
     return id;
@@ -23,19 +27,22 @@ public class User {
     this.id = id;
   }
 
-  public String getName() {
-    return name;
+  public String getTitle() {
+    return title;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setTitle(String title) {
+    this.title = title;
   }
 
-  public String getEmail() {
-    return email;
+  public String getPoster() {
+    return poster;
+  }
+  public String getOverview() {
+    return overview;
   }
 
-  public void setEmail(String email) {
-    this.email = email;
+  public void setPoster(String poster) {
+    this.poster = poster;
   }
 }
