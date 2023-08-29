@@ -1,5 +1,7 @@
 package com.example.MovieDatabase.Movie;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -38,6 +40,12 @@ public class MovieController {
   public @ResponseBody Iterable<Movie> getAllMovies() {
     // This returns a JSON or XML with the users
     return movieRepository.findAll();
+  }
+
+  @GetMapping(path="/{id}")
+  public @ResponseBody Optional<Movie> getMovie(@PathVariable("id") int id) {
+    // This returns a JSON or XML with the users
+    return movieRepository.findById(id);
   }
 
   // @DeleteMapping(value = "/{id}")

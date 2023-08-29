@@ -14,6 +14,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 import { MovieListComponent } from './movie-list/movie-list.component';
+import { MovieInfoComponent } from './movie-info/movie-info.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { MovieListComponent } from './movie-list/movie-list.component';
     UserListComponent,
     UserCreateComponent,
     UserUpdateComponent,
-    MovieListComponent
+    MovieListComponent,
+    MovieInfoComponent
   ],
   imports: [
     BrowserModule,

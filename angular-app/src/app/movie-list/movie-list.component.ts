@@ -20,6 +20,10 @@ export class MovieListComponent implements OnInit {
     this.getMovies();
   }
 
+  public openMovie(id: number) {
+    this.router.navigate(['movies/' + id]);
+  }
+
   private getMovies() {
     this.movieService.getMovieList().subscribe(data => {
       this.movies = data;

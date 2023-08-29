@@ -4,6 +4,10 @@
   align-items: stretch;
 
 }
+.clickable {
+  cursor: pointer;
+
+}
 /* mat-card img {
   object-fit: cover;
   width: 100%;
