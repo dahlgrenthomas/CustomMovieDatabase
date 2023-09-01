@@ -1,0 +1,7 @@
+com\example\MovieDatabase\Movie\Movie.class
+com\example\MovieDatabase\Movie\MovieController.class
+com\example\MovieDatabase\User\User.class
+com\example\MovieDatabase\Movie\MovieRepository.class
+com\example\MovieDatabase\User\UserRepository.class
+com\example\MovieDatabase\AccessingMovieDatabaseApplication.class
+com\example\MovieDatabase\User\MainController.class

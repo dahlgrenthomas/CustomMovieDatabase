@@ -15,6 +15,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieInfoComponent } from './movie-info/movie-info.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { MovieInfoComponent } from './movie-info/movie-info.component';
     MatButtonModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
