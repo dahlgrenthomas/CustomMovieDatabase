@@ -14,7 +14,7 @@ export class MovieService {
   }
 
   getMovieList(): Observable<Movie[]> {
-    return this.httpClient.get<Movie[]>(`${this.basUrl}` + '/all');
+    return this.httpClient.get<Movie[]>(`${this.basUrl}` + '/featured');
   }
 
   createMovie(movie: Movie): Observable<Object> {
@@ -25,11 +25,14 @@ export class MovieService {
     return this.httpClient.get<Movie>(`${this.basUrl}/${id}`);
   }
 
-  updateMovie(id: number, movie: Movie): Observable<Object> {
-    return this.httpClient.put(`${this.basUrl}/${id}`, Movie);
-  }
+  // updateMovie(id: number, movie: Movie): Observable<Object> {
+  //   return this.httpClient.put(`${this.basUrl}/${id}`, Movie);
+  // }
 
   deleteMovie(id: number): Observable<Object> {
     return this.httpClient.delete(`${this.basUrl}/${id}`);
+  }
+  getMovieBySearch(movie: string): Observable<Movie[]>{
+    return this.httpClient.get<Movie[]>(`${this.basUrl}` + '/moviesearch' +`/${movie}`);
   }
 }

@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 //@CrossOrigin(origins = "*", allowedHeaders = "*")
 @CrossOrigin(origins = "http://localhost:4200")
-@Controller // This means that this class is a Controller
+@RestController // This means that this class is a Controller
 @RequestMapping(path="/movies") // This means URL's start with /demo (after Application path)
 public class MovieController {
   @Autowired // This means to get the bean called userRepository
@@ -40,6 +41,17 @@ public class MovieController {
   public @ResponseBody Iterable<Movie> getAllMovies() {
     // This returns a JSON or XML with the users
     return movieRepository.findAll();
+  }
+
+  @GetMapping(path="/featured")
+  public @ResponseBody Iterable<Movie> getRandomMovies() {
+    // This returns a JSON or XML with the users
+    return movieRepository.getRandomMovies();
+  }
+  @GetMapping(path="/moviesearch/{movie}")
+  public @ResponseBody Iterable<Movie> getMoviesSearch(@PathVariable("movie") String movieName) {
+    // This returns a JSON or XML with the users
+    return movieRepository.findByName(movieName);
   }
 
   @GetMapping(path="/{id}")

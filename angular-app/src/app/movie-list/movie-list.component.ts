@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MovieService } from '../services/movie.service';
 import { Movie } from '../movie.model';
 
+
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
@@ -33,6 +34,11 @@ export class MovieListComponent implements OnInit {
   updateMovie(id: number) {
     this.router.navigate(['all', id]);
   }
+  public getMovie(movie: string) {
+    this.movieService.getMovieBySearch(movie).subscribe(data => {
+      this.movies = data;
+    });
+  }
 
   deleteMovie(id: number) {
     this.movieService.deleteMovie(id).subscribe(data => {
@@ -40,4 +46,7 @@ export class MovieListComponent implements OnInit {
       this.getMovies();
     });
   }
+
+
+
 }
