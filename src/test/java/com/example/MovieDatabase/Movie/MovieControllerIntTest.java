@@ -45,7 +45,7 @@ public class MovieControllerIntTest {
             .contentType(MediaType.APPLICATION_JSON)
             .content(objectMapper.writeValueAsString(movie));
         MvcResult result = mockMvc.perform(request).andReturn();
-        assertEquals(movie, result);
+        assertEquals(movie.toString(), result.toString());
 
 
 
