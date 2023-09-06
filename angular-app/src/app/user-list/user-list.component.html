@@ -16,7 +16,9 @@
           </style>
           <p class="overflow ellipsis">{{movie.overview}}</p>
         </mat-card-content>
-        <mat-card-actions>
+        <div *ngIf="accountService.isLoggedIn"> Yo Im logged in </div>
+        <div *ngIf="!accountService.isLoggedIn"> No Logged </div>
+        <mat-card-actions class="actions">
           <button mat-button (click)="removeFromUserList(movie.id)" class="btn btn-info">Remove from list</button>
           <!-- <button mat-button (click)="deleteMovie(movie.id)" class="btn btn-danger">Delete</button> -->
         </mat-card-actions>

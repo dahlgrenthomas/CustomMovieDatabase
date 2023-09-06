@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { User } from '../user.model';
 import { Movie } from '../movie.model';
+import { AccountService } from '../services/account.service';
 
 @Component({
   selector: 'app-user-list',
@@ -13,11 +14,12 @@ export class UserListComponent implements OnInit {
 
   movies: Movie[] | undefined;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router, public accountService: AccountService) {
 
   }
 
   ngOnInit(): void {
+    this.accountService.getLoggedInStatus();
     this.getUserMovies();
   }
   public openMovie(id: number) {

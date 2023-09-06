@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'demo', component: UserListComponent },
   { path: 'movies', component: MovieListComponent },
   { path: '', redirectTo: 'movies', pathMatch: 'full' },
+  { path: 'login', redirectTo: 'login', pathMatch: 'full' },
   { path: 'create-user', component: UserCreateComponent },
   { path: 'update-user/:id', component: UserUpdateComponent },
   { path: 'movies/:id', component: MovieInfoComponent },

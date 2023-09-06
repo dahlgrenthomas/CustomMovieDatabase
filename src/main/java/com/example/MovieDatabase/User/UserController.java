@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController // This means that this class is a Controller
 @RequestMapping(path="/api/user") // This means URL's start with /demo (after Application path)
-public class MainController {
+public class UserController {
 
   @Autowired
   private UserRepository userRepository;
@@ -66,6 +66,15 @@ public class MainController {
 
     
     return movieRepository.findAllById(ids);
+  }
+
+  @GetMapping(path = "/loggedstatus")
+  public @ResponseBody Boolean getLogStatus(@CurrentSecurityContext(expression = "authentication?.name") String userId) {
+    if(userId != "anonymousUser"){
+      return true;
+    }
+
+    return false;
   }
 
     // @GetMapping(path="/all")

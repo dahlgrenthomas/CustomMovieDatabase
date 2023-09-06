@@ -3,8 +3,8 @@
 
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" routerLinkActive="active" routerLink="demo">User List</a>
-      <a class="nav-item nav-link" routerLinkActive="active" routerLink="create-user">Create User</a>
+      <a class="nav-item nav-link active" routerLinkActive="active" routerLink="demo" *ngIf="accountService.isLoggedIn">User List</a>
+      <a class="nav-item nav-link active" routerLinkActive="active" href="http://localhost:8080/login" *ngIf="!accountService.isLoggedIn">Login</a>
     </div>
   </div>
 </nav>
