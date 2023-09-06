@@ -8,7 +8,7 @@ import { Movie } from '../movie.model';
 })
 export class MovieService {
 
-  private basUrl = "http://localhost:8080/movies"
+  private basUrl = "http://localhost:8080/api/movies"
 
   constructor(private httpClient: HttpClient) {
   }

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController 
-@RequestMapping(path="/movies") 
+@RequestMapping(path="/api/movies") 
 public class MovieController {
   @Autowired 
   private MovieRepository movieRepository;
