@@ -29,6 +29,13 @@ export class UserListComponent implements OnInit {
       this.movies = data;
     });
   }
+  removeFromUserList(id: number){
+    this.userService.removeFromList(id).subscribe(data => {
+      this.getUserMovies();
+
+    });
+
+  }
 
   updateUser(id: number) {
     this.router.navigate(['all', id]);

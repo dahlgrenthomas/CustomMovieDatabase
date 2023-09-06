@@ -34,6 +34,10 @@ export class UserService {
     return this.httpClient.get<Movie[]>(`${this.basUrl}` + '/userlist');
   }
 
+  removeFromList(id: number){
+    return this.httpClient.delete(`${this.basUrl}/` + 'removefromlist/' + `${id}`);
+  }
+
   updateUser(id: number, user: User): Observable<Object> {
     return this.httpClient.put(`${this.basUrl}/${id}`, user);
   }
