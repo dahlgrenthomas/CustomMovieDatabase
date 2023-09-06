@@ -29,8 +29,8 @@ public class SpringSecurity {
                                 .requestMatchers("/urlNotFound").permitAll()
                                 .requestMatchers("/api/movies/**").permitAll()
                                 .requestMatchers("/movies/**").permitAll()
-                                .requestMatchers("/demo/**").permitAll()
-                                //.requestMatchers("/demo").hasAnyRole("USER", "ADMIN")
+                                //.requestMatchers("/demo/").permitAll()
+                                .requestMatchers("/demo").hasAnyRole("USER", "ADMIN")
  
                                 //.requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
                                 //.requestMatchers("/admin/**").hasAnyRole("ADMIN")
