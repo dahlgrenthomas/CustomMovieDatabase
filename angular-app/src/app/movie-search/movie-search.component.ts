@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from '../services/account.service';
 import { MovieListComponent } from '../movie-list/movie-list.component';
 import { UserService } from '../services/user.service';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-movie-search',
@@ -44,10 +45,21 @@ export class MovieSearchComponent implements OnInit {
   }
 
   public getMovies() {
-    this.movieService.getMovieBySearch(this.movieSearch).subscribe(data => {
+    let params = new HttpParams();
+    params = params.append("movie", this.movieSearch)
+    this.movieService.getMovieBySearch(params).subscribe(data => {
+
       this.movies = data;
     });
   }
+  public getMovieSearch(movie: string) {
+    let params = new HttpParams();
+    params = params.append("movie", movie)
+    this.movieService.getMovieBySearch(params).subscribe(data => {
+      this.movies = data;
+    });
+  }
+
 
   updateMovie(id: number) {
     this.router.navigate(['all', id]);

@@ -1,3 +1,8 @@
+<div>
+  <input type="text" placeholder="Search for a movie" #filter>
+  <button matSuffix mat-button (click)="getMovieSearch(filter.value)"><mat-icon>search</mat-icon></button>
+</div>
+
 <div class="content">
   <div fxLayout="row wrap" fxLayoutGap="16px grid">
     <div fxFlex="10%" fxFlex.xs="100%" fxFlex.sm="33%" fxLayoutAlign="stretch" *ngFor="let movie of movies">

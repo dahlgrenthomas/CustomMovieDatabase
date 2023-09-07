@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Movie } from '../movie.model';
@@ -32,7 +32,8 @@ export class MovieService {
   deleteMovie(id: number): Observable<Object> {
     return this.httpClient.delete(`${this.basUrl}/${id}`);
   }
-  getMovieBySearch(movie: string): Observable<Movie[]>{
-    return this.httpClient.get<Movie[]>(`${this.basUrl}` + '/moviesearch' +`/${movie}`);
+  getMovieBySearch(params: HttpParams): Observable<Movie[]>{
+    console.log("`${this.basUrl}` + '/moviesearch'" + params.toString());
+    return this.httpClient.get<Movie[]>(`${this.basUrl}` + '/moviesearch', {params});
   }
 }
