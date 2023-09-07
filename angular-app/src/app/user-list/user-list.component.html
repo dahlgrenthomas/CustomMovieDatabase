@@ -1,4 +1,3 @@
-
 <div class="content">
   <div fxLayout="row wrap" fxLayoutGap="16px grid">
     <div fxFlex="10%" fxFlex.xs="100%" fxFlex.sm="33%" fxLayoutAlign="stretch" *ngFor="let movie of movies">
@@ -16,8 +15,6 @@
           </style>
           <p class="overflow ellipsis">{{movie.overview}}</p>
         </mat-card-content>
-        <div *ngIf="accountService.isLoggedIn"> Yo Im logged in </div>
-        <div *ngIf="!accountService.isLoggedIn"> No Logged </div>
         <mat-card-actions class="actions">
           <button mat-button (click)="removeFromUserList(movie.id)" class="btn btn-info">Remove from list</button>
           <!-- <button mat-button (click)="deleteMovie(movie.id)" class="btn btn-danger">Delete</button> -->

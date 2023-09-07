@@ -4,6 +4,8 @@ import { MovieService } from '../services/movie.service';
 import { Movie } from '../movie.model';
 import { ActivatedRoute} from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { AccountService } from '../services/account.service';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -19,7 +21,7 @@ export class MovieInfoComponent implements OnInit {
   private routeSub: Subscription = new Subscription;
   id: number = 0;
 
-  constructor(private movieService: MovieService, private router: Router, private route: ActivatedRoute) {
+  constructor(private movieService: MovieService, private router: Router, private route: ActivatedRoute, public accountService: AccountService, private userService: UserService) {
 
   }
 
@@ -32,6 +34,12 @@ export class MovieInfoComponent implements OnInit {
   }
   ngOnDestroy() {
     this.routeSub.unsubscribe();
+  }
+
+  public addToUserList(id: number) {
+    this.userService.addToList(id).subscribe(data => {
+
+    });
   }
 
   private getMovie() {

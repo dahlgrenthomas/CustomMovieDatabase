@@ -1,11 +1,12 @@
 <div class="content">
   <div fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div fxFlex="20%" fxFlex.xs="100%" fxFlex.sm="33%" fxLayoutAlign="stretch">
+    <div fxFlex="10%" fxFlex.xs="100%" fxFlex.sm="33%" fxLayoutAlign="stretch" *ngFor="let movie of movies">
       <mat-card class="mat-elevation-z4">
+
+        <img (click)="openMovie(movie.id)" class="clickable" mat-card-image src={{movie.poster}} />
         <mat-card-header>
           <mat-card-title>{{movie.title}}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image src={{movie.poster}} />
         <mat-card-content>
           <style>
             .ellipsis {
@@ -15,10 +16,10 @@
           <p class="overflow ellipsis">{{movie.overview}}</p>
         </mat-card-content>
         <mat-card-actions class="actions">
-          <button mat-button (click)="addToUserList(movie.id)" class="btn btn-info" *ngIf="accountService.isLoggedIn">Add to list</button>
+          <button mat-button (click)="addToUserList(movie.id)" class="btn btn-info"
+            *ngIf="accountService.isLoggedIn">Add to list</button>
         </mat-card-actions>
       </mat-card>
     </div>
   </div>
 </div>
-

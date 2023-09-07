@@ -46,7 +46,6 @@ public class MovieController {
   }
   @GetMapping(path="/moviesearch/{movie}")
   public @ResponseBody Iterable<Movie> getMoviesSearch(@PathVariable("movie") String movieName) {
-    // This returns a JSON or XML with the movies
     return movieRepository.findByName(movieName);
   }
 

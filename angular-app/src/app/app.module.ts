@@ -20,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 
 import {MatFormFieldModule } from '@angular/material/form-field';
+import { MovieSearchComponent } from './movie-search/movie-search.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {MatFormFieldModule } from '@angular/material/form-field';
     UserCreateComponent,
     UserUpdateComponent,
     MovieListComponent,
-    MovieInfoComponent
+    MovieInfoComponent,
+    MovieSearchComponent
   ],
   imports: [
     BrowserModule,

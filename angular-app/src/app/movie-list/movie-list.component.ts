@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MovieService } from '../services/movie.service';
 import { UserService } from '../services/user.service';
 import { Movie } from '../movie.model';
+import { AccountService } from '../services/account.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class MovieListComponent implements OnInit {
 
   movies: Movie[] | undefined;
 
-  constructor(private movieService: MovieService, private router: Router, private userService: UserService) {
+  constructor(private movieService: MovieService, private router: Router, private userService: UserService, public accountService: AccountService) {
 
   }
 
@@ -34,18 +35,12 @@ export class MovieListComponent implements OnInit {
 
   public addToUserList(id: number) {
     this.userService.addToList(id).subscribe(data => {
-      
+
     });
   }
-
 
   updateMovie(id: number) {
     this.router.navigate(['all', id]);
-  }
-  public getMovie(movie: string) {
-    this.movieService.getMovieBySearch(movie).subscribe(data => {
-      this.movies = data;
-    });
   }
 
   deleteMovie(id: number) {
