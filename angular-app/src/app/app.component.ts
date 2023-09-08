@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AccountService } from './services/account.service';
 import { Router } from '@angular/router';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,9 @@ export class AppComponent {
   }
   public getMovie(movie: string) {
     if (movie != "") {
-      this.router.navigate(['movies/search/' + movie]);
+      let params = new HttpParams()
+        .set("movie", movie);
+      this.router.navigate(['movies/search', {params}]);
     }
   }
 }

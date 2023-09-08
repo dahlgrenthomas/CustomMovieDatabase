@@ -7,12 +7,14 @@ import { AccountService } from '../services/account.service';
 import { MovieListComponent } from '../movie-list/movie-list.component';
 import { UserService } from '../services/user.service';
 import { HttpParams } from '@angular/common/http';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-movie-search',
   templateUrl: './movie-search.component.html',
   styleUrls: ['./movie-search.component.css']
 })
+
 export class MovieSearchComponent implements OnInit {
 
 
@@ -20,14 +22,19 @@ export class MovieSearchComponent implements OnInit {
   private routeSub: Subscription = new Subscription;
   movieSearch: string = "";
 
-  constructor(public movieService: MovieService, private router: Router, private route: ActivatedRoute, public accountService: AccountService, private userService: UserService) {
+
+  constructor(public movieService: MovieService, private router: Router, private route: ActivatedRoute, public accountService: AccountService, private userService: UserService,
+    private formBuilder: FormBuilder) {
 
   }
 
   ngOnInit(): void {
-    this.routeSub = this.route.params.subscribe(params => {
-      this.movieSearch = params['movie'];
-      this.getMovies();
+    this.routeSub = this.route.params.subscribe(param => {
+      let params = new HttpParams()
+        .set("movie", '' + param["movie"])
+;
+
+      this.getMovieSearch(params);
     });
 
   }
@@ -35,9 +42,35 @@ export class MovieSearchComponent implements OnInit {
   ngOnDestroy() {
     this.routeSub.unsubscribe();
   }
+
+
+  searchForm = this.formBuilder.group({
+    title: '',
+    year: '',
+    genre: ''
+
+  });
+
+  public onSubmit(): void {
+    let params = new HttpParams()
+    .set("movie", '' + this.searchForm.value.title)
+    .set("year", '' + this.searchForm.value.year)
+    .set("genre", '' + this.searchForm.value.genre);
+
+    console.log(params.toString());
+
+    this.movieService.getMovieBySearch(params).subscribe(data => {
+
+      this.movies = data;
+    });
+
+  }
+
+
   public openMovie(id: number) {
     this.router.navigate(['movies/' + id]);
   }
+
   public addToUserList(id: number) {
     this.userService.addToList(id).subscribe(data => {
 
@@ -52,9 +85,8 @@ export class MovieSearchComponent implements OnInit {
       this.movies = data;
     });
   }
-  public getMovieSearch(movie: string) {
-    let params = new HttpParams();
-    params = params.append("movie", movie)
+  public getMovieSearch(params: HttpParams) {
+
     this.movieService.getMovieBySearch(params).subscribe(data => {
       this.movies = data;
     });

@@ -1,7 +1,29 @@
-<div>
-  <input type="text" placeholder="Search for a movie" #filter>
-  <button matSuffix mat-button (click)="getMovieSearch(filter.value)"><mat-icon>search</mat-icon></button>
-</div>
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+
+<mat-form-field>
+  <mat-label>Title</mat-label>
+  <input matInput id="title" type="text" formControlName="title">
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Year</mat-label>
+  <input matInput id="year" type="text" formControlName="year">
+</mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Genre</mat-label>
+    <select matNativeControl formControlName="genre" id="genre">
+      <option value="action">Action</option>
+      <option value="thriller">Thriller</option>
+      <option value="comedy">Comedy</option>
+      <option value="drama">Drama</option>
+    </select>
+  </mat-form-field>
+
+  <button mat-flat-button class="button" color="primary" type="submit">Search</button>
+
+</form>
+
 
 <div class="content">
   <div fxLayout="row wrap" fxLayoutGap="16px grid">

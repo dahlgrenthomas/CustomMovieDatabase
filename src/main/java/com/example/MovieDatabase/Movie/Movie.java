@@ -17,6 +17,10 @@ public class Movie {
 
   private String overview;
 
+  private Integer year;
+
+  private String genre;
+
 
 
   public Integer getId() {
@@ -48,5 +52,20 @@ public class Movie {
 
   public void setOverview(String string) {
     this.overview = string;
+  }
+
+  public void setGenre(String genre){
+    this.genre = genre;
+  }
+  public String getGenre() {
+      return genre;
+  }
+
+  public void setYear(Integer year){
+    this.year = year;
+  }
+
+  public Integer getYear() {
+      return year;
   }
 }

@@ -42,8 +42,19 @@ public class MovieController {
   }
   @GetMapping(path="/moviesearch")
   public @ResponseBody Iterable<Movie> getMoviesSearch(@RequestParam Map<String, String> params) {
+    Integer year = null;
+    if(params.get("year").length() > 0){
+      year = Integer.parseInt(params.get("year"));
 
-    return movieRepository.findByName(params.get("movie"));
+    }
+
+    return movieRepository.movieFind(params.get("movie"), year, params.get("genre"));
+  }
+
+    @GetMapping(path="/searching/{title}/{year}/{genre}")
+  public @ResponseBody Iterable<Movie> movieSearchTest(@PathVariable("title") String title, @PathVariable("year") int year, @PathVariable("genre") String genre) {
+
+    return movieRepository.movieFind(title, year, genre);
   }
 
   @GetMapping(path="/{id}")

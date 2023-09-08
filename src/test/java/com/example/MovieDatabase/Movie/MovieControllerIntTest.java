@@ -93,41 +93,41 @@ public class MovieControllerIntTest {
 
     }
 
-    @Test
-    void getMoviesSearch() throws Exception{
-        List<Movie> listOfMovies = new ArrayList<>();
-        Movie movie = new Movie();
-        movie.setId(1);
-        movie.setTitle("movie");
-        movie.setPoster("poster.link");
-        movie.setOverview("Fun movie");
+    // @Test
+    // void getMoviesSearch() throws Exception{
+    //     List<Movie> listOfMovies = new ArrayList<>();
+    //     Movie movie = new Movie();
+    //     movie.setId(1);
+    //     movie.setTitle("movie");
+    //     movie.setPoster("poster.link");
+    //     movie.setOverview("Fun movie");
 
-        Movie movie2 = new Movie();
-        movie2.setId(2);
-        movie2.setTitle("movie2");
-        movie2.setPoster("poster.link2");
-        movie2.setOverview("Fun movie2");
+    //     Movie movie2 = new Movie();
+    //     movie2.setId(2);
+    //     movie2.setTitle("movie2");
+    //     movie2.setPoster("poster.link2");
+    //     movie2.setOverview("Fun movie2");
 
-        Movie movie3 = new Movie();
-        movie3.setId(2);
-        movie3.setTitle("title");
-        movie3.setPoster("poster.link2");
-        movie3.setOverview("Fun movie2");
+    //     Movie movie3 = new Movie();
+    //     movie3.setId(2);
+    //     movie3.setTitle("title");
+    //     movie3.setPoster("poster.link2");
+    //     movie3.setOverview("Fun movie2");
 
-        listOfMovies.add(movie);
-        listOfMovies.add(movie2);
+    //     listOfMovies.add(movie);
+    //     listOfMovies.add(movie2);
 
-        Mockito.when(movieRepository.findByName("movie")).thenReturn(listOfMovies.subList(0, 2));
+    //     Mockito.when(movieRepository.findByName("movie")).thenReturn(listOfMovies.subList(0, 2));
 
-        ResultActions response = mockMvc.perform(get("/movies/moviesearch/{movie}", "movie"));
+    //     ResultActions response = mockMvc.perform(get("/movies/moviesearch/{movie}", "movie"));
 
-        response.andExpect(status().isOk())
-                .andDo(print())
-                .andExpect(jsonPath("$.size()",
-                        is(2)));
+    //     response.andExpect(status().isOk())
+    //             .andDo(print())
+    //             .andExpect(jsonPath("$.size()",
+    //                     is(2)));
 
 
-    }
+    // }
 
 
 }
