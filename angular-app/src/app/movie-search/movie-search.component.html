@@ -7,7 +7,12 @@
 
 <mat-form-field>
   <mat-label>Year</mat-label>
-  <input matInput id="year" type="text" formControlName="year">
+  <select matNativeControl formControlName="year" id="year">
+    <option *ngFor="let year of years" [value]="year">
+      {{year}}
+    </option>
+    <option value="">Any Year</option>
+  </select>
 </mat-form-field>
 
   <mat-form-field>
@@ -16,7 +21,15 @@
       <option value="action">Action</option>
       <option value="thriller">Thriller</option>
       <option value="comedy">Comedy</option>
-      <option value="drama">Drama</option>
+      <option value="sci-fi">Sci-Fi</option>
+      <option value="western">Western</option>
+      <option value="crime">Crime</option>
+      <option value="biography">Biography</option>
+      <option value="fantasy">Fantasy</option>
+      <option value="horror">Horror</option>
+      <option value="war">War</option>
+      <option value="">Any Genre</option>
+
     </select>
   </mat-form-field>
 

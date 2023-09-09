@@ -15,7 +15,8 @@ const routes: Routes = [
   { path: 'create-user', component: UserCreateComponent },
   { path: 'update-user/:id', component: UserUpdateComponent },
   { path: 'movies/:id', component: MovieInfoComponent },
-  { path: 'movies/search',  component: MovieSearchComponent },
+  { path: 'search',  component: MovieSearchComponent },
+
 
 ];
 

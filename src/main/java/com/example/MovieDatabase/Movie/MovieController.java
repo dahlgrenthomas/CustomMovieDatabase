@@ -43,7 +43,7 @@ public class MovieController {
   @GetMapping(path="/moviesearch")
   public @ResponseBody Iterable<Movie> getMoviesSearch(@RequestParam Map<String, String> params) {
     Integer year = null;
-    if(params.get("year").length() > 0){
+    if(params.get("year") !=null && params.get("year").length() > 0){
       year = Integer.parseInt(params.get("year"));
 
     }

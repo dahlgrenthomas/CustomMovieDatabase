@@ -33,7 +33,6 @@ export class MovieService {
     return this.httpClient.delete(`${this.basUrl}/${id}`);
   }
   getMovieBySearch(params: HttpParams): Observable<Movie[]>{
-    console.log("`${this.basUrl}` + '/moviesearch'" + params.toString());
     return this.httpClient.get<Movie[]>(`${this.basUrl}` + '/moviesearch', {params});
   }
 }

@@ -15,57 +15,57 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./movie-search.component.css']
 })
 
-export class MovieSearchComponent implements OnInit {
+export class MovieSearchComponent implements OnInit{
 
-
-  movies: Movie[] | undefined;
+  movies: Movie[] = [];
   private routeSub: Subscription = new Subscription;
   movieSearch: string = "";
 
+  years: number[] = [];
 
   constructor(public movieService: MovieService, private router: Router, private route: ActivatedRoute, public accountService: AccountService, private userService: UserService,
     private formBuilder: FormBuilder) {
+    for (let i = 1900; i <= 2023; i++) {
+      this.years.push(i);
+    }
 
   }
 
   ngOnInit(): void {
-    this.routeSub = this.route.params.subscribe(param => {
-      let params = new HttpParams()
-        .set("movie", '' + param["movie"])
-;
+    this.route.queryParams.subscribe(params => {
+        let myParams = new HttpParams();
 
-      this.getMovieSearch(params);
+
+        if (params[("movie")] != undefined ) {
+          myParams = myParams.set("movie", '' + params[("movie")]);
+        }
+
+        if (params[("year")] != undefined){
+          myParams = myParams.set("year", '' + params[("year")]);
+        }
+
+        if (params[("genre")] != undefined ){
+          myParams = myParams.set("genre", '' + params[("genre")]);
+        }
+
+
+      this.getMovieSearch(myParams);
     });
-
   }
 
   ngOnDestroy() {
     this.routeSub.unsubscribe();
   }
 
-
   searchForm = this.formBuilder.group({
     title: '',
     year: '',
     genre: ''
-
   });
 
   public onSubmit(): void {
-    let params = new HttpParams()
-    .set("movie", '' + this.searchForm.value.title)
-    .set("year", '' + this.searchForm.value.year)
-    .set("genre", '' + this.searchForm.value.genre);
-
-    console.log(params.toString());
-
-    this.movieService.getMovieBySearch(params).subscribe(data => {
-
-      this.movies = data;
-    });
-
+    this.router.navigate(['search'], { queryParams: { "movie": this.searchForm.value.title, "year": this.searchForm.value.year, "genre": this.searchForm.value.genre } });
   }
-
 
   public openMovie(id: number) {
     this.router.navigate(['movies/' + id]);
@@ -73,34 +73,12 @@ export class MovieSearchComponent implements OnInit {
 
   public addToUserList(id: number) {
     this.userService.addToList(id).subscribe(data => {
-
     });
   }
 
-  public getMovies() {
-    let params = new HttpParams();
-    params = params.append("movie", this.movieSearch)
-    this.movieService.getMovieBySearch(params).subscribe(data => {
-
-      this.movies = data;
-    });
-  }
   public getMovieSearch(params: HttpParams) {
-
     this.movieService.getMovieBySearch(params).subscribe(data => {
       this.movies = data;
-    });
-  }
-
-
-  updateMovie(id: number) {
-    this.router.navigate(['all', id]);
-  }
-
-  deleteMovie(id: number) {
-    this.movieService.deleteMovie(id).subscribe(data => {
-      console.log(data);
-      this.getMovies();
     });
   }
 
