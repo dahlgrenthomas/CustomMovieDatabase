@@ -16,7 +16,7 @@
           <p class="overflow ellipsis">{{movie.overview}}</p>
         </mat-card-content>
         <mat-card-actions class="actions">
-          <button mat-button (click)="removeFromUserList(movie.id)" class="btn btn-info">Remove from list</button>
+          <button mat-button (click)="removeFromUserList(movie.id)" mat-raised-button color="warn">Remove from list</button>
           <!-- <button mat-button (click)="deleteMovie(movie.id)" class="btn btn-danger">Delete</button> -->
         </mat-card-actions>
       </mat-card>

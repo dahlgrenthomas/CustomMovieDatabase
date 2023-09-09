@@ -33,6 +33,7 @@ export class UserListComponent implements OnInit {
   }
   removeFromUserList(id: number){
     this.userService.removeFromList(id).subscribe(data => {
+      this.accountService.getUserMovieListIds();
       this.getUserMovies();
 
     });

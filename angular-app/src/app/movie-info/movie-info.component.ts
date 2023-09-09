@@ -38,7 +38,13 @@ export class MovieInfoComponent implements OnInit {
 
   public addToUserList(id: number) {
     this.userService.addToList(id).subscribe(data => {
+      this.accountService.getUserMovieListIds();
+    });
+  }
 
+  removeFromUserList(id: number) {
+    this.userService.removeFromList(id).subscribe(data => {
+      this.accountService.getUserMovieListIds();
     });
   }
 

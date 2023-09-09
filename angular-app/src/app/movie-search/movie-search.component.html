@@ -56,8 +56,10 @@
           <p class="overflow ellipsis">{{movie.overview}}</p>
         </mat-card-content>
         <mat-card-actions class="actions">
-          <button mat-button (click)="addToUserList(movie.id)" class="btn btn-info"
-            *ngIf="accountService.isLoggedIn">Add to list</button>
+                    <button mat-button (click)="addToUserList(movie.id)" class="btn btn-info"
+                      *ngIf="accountService.isLoggedIn && !accountService.userMovieIds.includes(movie.id)">Add to list</button>
+                    <button mat-button (click)="removeFromUserList(movie.id)" mat-raised-button color="warn"
+                      *ngIf="accountService.isLoggedIn && accountService.userMovieIds.includes(movie.id)">Remove from list</button>
         </mat-card-actions>
       </mat-card>
     </div>

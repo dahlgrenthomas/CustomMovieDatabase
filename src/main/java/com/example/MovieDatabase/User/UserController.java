@@ -71,6 +71,15 @@ public class UserController {
     return false;
   }
 
+  @GetMapping(path = "/usermovies")
+  public @ResponseBody List<Integer> getUserList(@CurrentSecurityContext(expression = "authentication?.name") String userId) {
+    List<UserMovieList> list = movieUserMovieListRepository.findByUserId(userId);
+    
+    List<Integer> ids = list.stream().map(UserMovieList::getMovieId).collect(Collectors.toList());
+
+    return ids;
+  }
+
     // @GetMapping(path="/all")
   // public @ResponseBody String getAllUsers(@CurrentSecurityContext(expression = "authentication?.name") String username) {
   //   // This returns a JSON or XML with the users

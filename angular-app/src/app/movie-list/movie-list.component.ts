@@ -27,6 +27,12 @@ export class MovieListComponent implements OnInit {
     this.router.navigate(['movies/' + id]);
   }
 
+  removeFromUserList(id: number) {
+    this.userService.removeFromList(id).subscribe(data => {
+      this.accountService.getUserMovieListIds();
+    });
+  }
+
   private getMovies() {
     this.movieService.getMovieList().subscribe(data => {
       this.movies = data;
@@ -35,7 +41,7 @@ export class MovieListComponent implements OnInit {
 
   public addToUserList(id: number) {
     this.userService.addToList(id).subscribe(data => {
-
+      this.accountService.getUserMovieListIds();
     });
   }
 

@@ -67,12 +67,19 @@ export class MovieSearchComponent implements OnInit{
     this.router.navigate(['search'], { queryParams: { "movie": this.searchForm.value.title, "year": this.searchForm.value.year, "genre": this.searchForm.value.genre } });
   }
 
+  removeFromUserList(id: number) {
+    this.userService.removeFromList(id).subscribe(data => {
+      this.accountService.getUserMovieListIds();
+    });
+  }
+
   public openMovie(id: number) {
     this.router.navigate(['movies/' + id]);
   }
 
   public addToUserList(id: number) {
     this.userService.addToList(id).subscribe(data => {
+      this.accountService.getUserMovieListIds();
     });
   }
 
