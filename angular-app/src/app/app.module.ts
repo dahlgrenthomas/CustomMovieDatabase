@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { UserCreateComponent } from './user-create/user-create.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UserUpdateComponent } from './user-update/user-update.component';
+
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,8 +27,6 @@ import { MovieSearchComponent } from './movie-search/movie-search.component';
   declarations: [
     AppComponent,
     UserListComponent,
-    UserCreateComponent,
-    UserUpdateComponent,
     MovieListComponent,
     MovieInfoComponent,
     MovieSearchComponent
@@ -51,6 +49,7 @@ import { MovieSearchComponent } from './movie-search/movie-search.component';
     MatSelectModule
   ],
   providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

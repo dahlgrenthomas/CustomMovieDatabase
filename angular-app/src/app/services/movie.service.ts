@@ -17,21 +17,10 @@ export class MovieService {
     return this.httpClient.get<Movie[]>(`${this.basUrl}` + '/featured');
   }
 
-  createMovie(movie: Movie): Observable<Object> {
-    return this.httpClient.post(`${this.basUrl}` + '/add', movie, { responseType: 'text' });
-  }
-
   getMovieById(id: number): Observable<Movie> {
     return this.httpClient.get<Movie>(`${this.basUrl}/${id}`);
   }
 
-  // updateMovie(id: number, movie: Movie): Observable<Object> {
-  //   return this.httpClient.put(`${this.basUrl}/${id}`, Movie);
-  // }
-
-  deleteMovie(id: number): Observable<Object> {
-    return this.httpClient.delete(`${this.basUrl}/${id}`);
-  }
   getMovieBySearch(params: HttpParams): Observable<Movie[]>{
     return this.httpClient.get<Movie[]>(`${this.basUrl}` + '/moviesearch', {params});
   }

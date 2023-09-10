@@ -53,15 +53,4 @@ export class MovieInfoComponent implements OnInit {
       this.movie = data;
     });
   }
-
-  updateMovie(id: number) {
-    this.router.navigate(['all', id]);
-  }
-
-  deleteMovie(id: number) {
-    this.movieService.deleteMovie(id).subscribe(data => {
-      console.log(data);
-      this.getMovie();
-    });
-  }
 }

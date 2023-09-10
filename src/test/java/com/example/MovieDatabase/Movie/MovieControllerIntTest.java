@@ -23,6 +23,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.willDoNothing;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -52,19 +53,23 @@ public class MovieControllerIntTest {
         movie.setTitle("movie");
         movie.setPoster("poster.link");
         movie.setOverview("Fun movie");
+        movie.setGenre("null");
+        movie.setYear(1999);
 
         Movie movie2 = new Movie();
         movie2.setId(2);
         movie2.setTitle("movie2");
         movie2.setPoster("poster.link2");
         movie2.setOverview("Fun movie2");
+        movie.setGenre("null");
+        movie.setYear(1999);
 
         listOfMovies.add(movie);
         listOfMovies.add(movie2);
 
         Mockito.when(movieRepository.findAll()).thenReturn(listOfMovies);
 
-        ResultActions response = mockMvc.perform(get("/movies/all"));
+        ResultActions response = mockMvc.perform(get("/api/movies/all"));
 
         response.andExpect(status().isOk())
                 .andDo(print())
@@ -83,7 +88,7 @@ public class MovieControllerIntTest {
 
         Mockito.when(movieRepository.findById(movie.getId())).thenReturn(Optional.of(movie));
 
-        ResultActions response = mockMvc.perform(get("/movies/{id}", movie.getId()));
+        ResultActions response = mockMvc.perform(get("/api/movies/{id}", movie.getId()));
 
         response.andExpect(status().isOk())
                 .andDo(print())

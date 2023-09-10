@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { AccountService } from './services/account.service';
 import { Router } from '@angular/router';
-import { HttpParams } from '@angular/common/http';
+
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import { HttpParams } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'angular-app';
-  constructor(public accountService: AccountService, private router: Router) {
+  constructor(public accountService: AccountService, private router: Router, public matIcon: MatIconModule) {
 
   }
 
