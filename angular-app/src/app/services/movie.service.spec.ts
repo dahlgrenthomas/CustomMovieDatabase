@@ -65,6 +65,9 @@ describe('MovieService', () => {
 
     const req = httpTestingController.expectOne('http://localhost:8080/api/movies/1');
 
+    // Assert that the request is a GET.
+    expect(req.request.method).toEqual('GET');
+
     req.flush(testMovie1);
 
     httpTestingController.verify();
@@ -83,6 +86,9 @@ describe('MovieService', () => {
     });
 
     const req = httpTestingController.expectOne('http://localhost:8080/api/movies/moviesearch?movie=test');
+
+    // Assert that the request is a GET.
+    expect(req.request.method).toEqual('GET');
 
     req.flush(testData);
 
