@@ -26,9 +26,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 public class UserController {
 
   @Autowired
-  private UserRepository userRepository;
-
-  @Autowired
   private MovieRepository movieRepository;
 
   @Autowired
@@ -46,7 +43,6 @@ public class UserController {
 
 
   @DeleteMapping(value = "/removefromlist/{id}")
-  //@GetMapping(path="/removefromlist/{id}")
   public @ResponseBody void removeFromList(@PathVariable("id") Integer movieId, @CurrentSecurityContext(expression = "authentication?.name") String userId) {
 
     movieUserMovieListRepository.removeByUserIdAndMovieId(userId, movieId);
@@ -58,7 +54,6 @@ public class UserController {
     
     List<Integer> ids = list.stream().map(UserMovieList::getMovieId).collect(Collectors.toList());
 
-    
     return movieRepository.findAllById(ids);
   }
 
@@ -79,28 +74,5 @@ public class UserController {
 
     return ids;
   }
-
-    // @GetMapping(path="/all")
-  // public @ResponseBody String getAllUsers(@CurrentSecurityContext(expression = "authentication?.name") String username) {
-  //   // This returns a JSON or XML with the users
-  //   return username;
-  // }
-
-  // @DeleteMapping(value = "/{id}")
-	// @ResponseStatus(value = HttpStatus.NO_CONTENT)
-	// public void deleteUser(@PathVariable int id) {
-	// 	userRepository.deleteById(id);
-	// }
-
-    // @PostMapping(path="/add") // Map ONLY POST Requests
-  // //@ResponseStatus(code = HttpStatus.OK, reason = "OK")
-  // @ResponseStatus(value = HttpStatus.CREATED)
-  // public @ResponseBody User addNewUser (@RequestBody User user) {
-
-  //   // @RequestParam means it is a parameter from the GET or POST request
-    
-  
-  //   return userRepository.save(user);
-  // }
 
 }
