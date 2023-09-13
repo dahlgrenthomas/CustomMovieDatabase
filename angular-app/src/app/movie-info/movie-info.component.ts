@@ -48,7 +48,7 @@ export class MovieInfoComponent implements OnInit {
     });
   }
 
-  private getMovie() {
+  getMovie() {
     this.movieService.getMovieById(this.id).subscribe(data => {
       this.movie = data;
     });

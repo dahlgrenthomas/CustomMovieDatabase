@@ -18,9 +18,9 @@ export class AppComponent {
   ngOnInit(): void {
     this.accountService.getLoggedInStatus();
   }
-  public getMovie(title: string) {
-    if (title != "") {
-      this.router.navigate(['search'], { queryParams: { "movie": title} });
+  public getMovie(movie: string) {
+    if (movie != "") {
+      this.router.navigate(['search'], { queryParams: { "movie": movie} });
     }
   }
 }

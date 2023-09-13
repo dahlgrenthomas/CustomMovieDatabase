@@ -84,7 +84,7 @@ describe('MovieSearchComponent', () => {
 
     component.onSubmit();
     fixture.detectChanges();
-    // !! change expectation !!
+
     expect(router.navigate).toHaveBeenCalledWith(['search'], { queryParams: { "movie": 'test', "year": '2005', "genre":  'thriller'} });
 
 
@@ -142,7 +142,7 @@ describe('MovieSearchComponent', () => {
 
     component.openMovie(id);
     fixture.detectChanges();
-    // !! change expectation !!
+    
     expect(router.navigate).toHaveBeenCalledWith(['movies/' + id]);
   });
 

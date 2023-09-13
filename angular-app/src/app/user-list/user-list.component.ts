@@ -26,7 +26,7 @@ export class UserListComponent implements OnInit {
     this.router.navigate(['movies/' + id]);
   }
 
-  private getUserMovies() {
+  getUserMovies() {
     this.userService.getUserMovies().subscribe(data => {
       this.movies = data;
     });
@@ -39,15 +39,4 @@ export class UserListComponent implements OnInit {
     });
 
   }
-
-  updateUser(id: number) {
-    this.router.navigate(['all', id]);
-  }
-
-  // deleteUser(id: number) {
-  //   this.userService.deleteUser(id).subscribe(data => {
-  //     console.log(data);
-  //     this.getUsers();
-  //   });
-  // }
 }
