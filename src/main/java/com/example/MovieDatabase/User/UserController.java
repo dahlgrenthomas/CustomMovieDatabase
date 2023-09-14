@@ -33,7 +33,7 @@ public class UserController {
  
 
   @GetMapping(path="/movieadd/{id}")
-  public @ResponseBody void getMoviesSearch(@PathVariable("id") Integer movieId, @CurrentSecurityContext(expression = "authentication?.name") String userId) {
+  public @ResponseBody void addToUserList(@PathVariable("id") Integer movieId, @CurrentSecurityContext(expression = "authentication?.name") String userId) {
     UserMovieList userMovie = new UserMovieList();
     userMovie.setUserId(userId);
     userMovie.setMovieId(movieId);
@@ -59,6 +59,7 @@ public class UserController {
 
   @GetMapping(path = "/loggedstatus")
   public @ResponseBody Boolean getLogStatus(@CurrentSecurityContext(expression = "authentication?.name") String userId) {
+    System.out.println(userId);
     if(userId != "anonymousUser"){
       return true;
     }

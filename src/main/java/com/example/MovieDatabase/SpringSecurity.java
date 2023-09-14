@@ -24,6 +24,7 @@ public class SpringSecurity {
                                 .requestMatchers("/api/movies/**").permitAll()
                                 .requestMatchers("/movies/**").permitAll()
                                 .requestMatchers("/search/**").permitAll()
+                                .requestMatchers("/api/user/loggedstatus").permitAll()
                                 //.requestMatchers("/demo/").permitAll()
                                 .requestMatchers("/demo").hasAnyRole("USER", "ADMIN")
                                 .requestMatchers("/api/user").hasAnyRole("USER", "ADMIN")
