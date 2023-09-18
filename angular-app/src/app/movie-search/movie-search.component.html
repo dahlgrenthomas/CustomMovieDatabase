@@ -28,6 +28,7 @@
       <option value="fantasy">Fantasy</option>
       <option value="horror">Horror</option>
       <option value="war">War</option>
+      <option value="adventure">Adventure</option>
       <option value="">Any Genre</option>
 
     </select>
@@ -46,6 +47,7 @@
         <img (click)="openMovie(movie.id)" class="clickable" mat-card-image src={{movie.poster}} />
         <mat-card-header>
           <mat-card-title>{{movie.title}}</mat-card-title>
+          <mat-card-subtitle>{{movie.year}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
           <style>

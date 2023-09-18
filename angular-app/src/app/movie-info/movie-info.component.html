@@ -1,9 +1,8 @@
-<div class="content">
-  <div fxLayoutGap="16px grid">
-    <div fxFlex="20%" fxFlex.xs="100%" fxFlex.sm="33%" fxLayoutAlign="stretch">
+<div class="main">
       <mat-card class="mat-elevation-z4">
         <mat-card-header>
           <mat-card-title>{{movie.title}}</mat-card-title>
+          <mat-card-subtitle>{{movie.year}}</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image src={{movie.poster}} />
         <mat-card-content>
@@ -12,6 +11,7 @@
               text-overflow: ellipsis;
             }
           </style>
+          <p class="overflow ellipsis">{{movie.genre}}</p>
           <p class="overflow ellipsis">{{movie.overview}}</p>
         </mat-card-content>
         <mat-card-actions class="actions">
@@ -21,7 +21,5 @@
                                 *ngIf="accountService.isLoggedIn && accountService.userMovieIds.includes(movie.id)">Remove from list</button>
         </mat-card-actions>
       </mat-card>
-    </div>
-  </div>
 </div>
 
