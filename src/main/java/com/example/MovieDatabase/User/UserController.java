@@ -59,7 +59,6 @@ public class UserController {
 
   @GetMapping(path = "/loggedstatus")
   public @ResponseBody Boolean getLogStatus(@CurrentSecurityContext(expression = "authentication?.name") String userId) {
-    System.out.println(userId);
     if(userId != "anonymousUser"){
       return true;
     }
