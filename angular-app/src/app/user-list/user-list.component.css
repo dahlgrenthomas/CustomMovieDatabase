@@ -1,16 +1,18 @@
-.content {
-  padding: 16px;
+.layout-row {
+
+  display: flex;
+  align-items: stretch;
+
 }
 
-.content>mat-card {
-  width: 200px;
-  word-break: break-all;
-}
-.ellipsis {
-  text-overflow: ellipsis;
+.clickable {
+  cursor: pointer;
 
-  /* Required for text-overflow to do anything */
-  white-space: nowrap;
-  overflow: hidden;
 }
+
+.actions {
+  margin-top: auto;
+  text-align: center;
+}
+
 

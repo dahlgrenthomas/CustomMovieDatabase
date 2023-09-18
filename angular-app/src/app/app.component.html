@@ -1,11 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd">
-  <a class="navbar-brand" routerLink=""> Angular Movie Database</a>
+  <a class="navbar-brand" routerLink="">Angular Movie Database</a>
 
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" routerLinkActive="active" routerLink="demo">User List</a>
-      <a class="nav-item nav-link" routerLinkActive="active" routerLink="create-user">Create User</a>
+      <a class="nav-item nav-link active" routerLinkActive="active" routerLink="demo" *ngIf="accountService.isLoggedIn">User List</a>
+      <a class="nav-item nav-link active" routerLinkActive="active" routerLink="search">All Movies</a>
+      <a class="nav-item nav-link active" routerLinkActive="active" href="http://localhost:8080/logout" *ngIf="accountService.isLoggedIn">Logout</a>
+      <a class="nav-item nav-link active" routerLinkActive="active" href="http://localhost:8080/login" *ngIf="!accountService.isLoggedIn">Login</a>
     </div>
+  </div>
+  <div>
+    <input type="text" placeholder="Search for a movie" #filter>
+    <button matSuffix mat-button (click)="getMovie(filter.value)"><mat-icon>search</mat-icon></button>
   </div>
 </nav>
 <router-outlet></router-outlet>

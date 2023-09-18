@@ -1,0 +1,16 @@
+.layout-row {
+
+  display: flex;
+  align-items: stretch;
+
+}
+
+.clickable {
+  cursor: pointer;
+
+}
+
+.actions {
+  margin-top: auto;
+  text-align: center;
+}

@@ -1,0 +1,17 @@
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+.mat-elevation-z4{
+    max-width: 25%;
+}
+
+mat-card img {
+  object-fit: cover;
+  width: 50%;
+  height: 50%;
+}

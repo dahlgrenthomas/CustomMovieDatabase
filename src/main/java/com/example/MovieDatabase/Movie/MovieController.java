@@ -1,24 +1,20 @@
 package com.example.MovieDatabase.Movie;
 
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController 
-@RequestMapping(path="/movies") 
+@RequestMapping(path="/api/movies") 
 public class MovieController {
   @Autowired 
   private MovieRepository movieRepository;
@@ -44,10 +40,14 @@ public class MovieController {
     // This returns a JSON or XML with the movies
     return movieRepository.getRandomMovies();
   }
-  @GetMapping(path="/moviesearch/{movie}")
-  public @ResponseBody Iterable<Movie> getMoviesSearch(@PathVariable("movie") String movieName) {
-    // This returns a JSON or XML with the movies
-    return movieRepository.findByName(movieName);
+  @GetMapping(path="/moviesearch")
+  public @ResponseBody Iterable<Movie> getMoviesSearch(@RequestParam Map<String, String> params) {
+    Integer year = null;
+    if(params.get("year") !=null && params.get("year").length() > 0){
+      year = Integer.parseInt(params.get("year"));
+
+    }
+    return movieRepository.movieFind(params.get("movie"), year, params.get("genre"));
   }
 
   @GetMapping(path="/{id}")

@@ -3,4 +3,6 @@ export class Movie {
   poster!: string;
   title!: string;
   overview!: string;
+  year?: number;
+  genre?: string;
 }

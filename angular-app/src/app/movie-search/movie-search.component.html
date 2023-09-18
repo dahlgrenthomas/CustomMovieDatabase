@@ -1,0 +1,69 @@
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+
+<mat-form-field>
+  <mat-label>Title</mat-label>
+  <input matInput id="title" type="text" formControlName="title">
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Year</mat-label>
+  <select matNativeControl formControlName="year" id="year">
+    <option *ngFor="let year of years" [value]="year">
+      {{year}}
+    </option>
+    <option value="">Any Year</option>
+  </select>
+</mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Genre</mat-label>
+    <select matNativeControl formControlName="genre" id="genre">
+      <option value="action">Action</option>
+      <option value="thriller">Thriller</option>
+      <option value="comedy">Comedy</option>
+      <option value="sci-fi">Sci-Fi</option>
+      <option value="western">Western</option>
+      <option value="crime">Crime</option>
+      <option value="biography">Biography</option>
+      <option value="fantasy">Fantasy</option>
+      <option value="horror">Horror</option>
+      <option value="war">War</option>
+      <option value="adventure">Adventure</option>
+      <option value="">Any Genre</option>
+
+    </select>
+  </mat-form-field>
+
+  <button mat-flat-button class="button" color="primary" type="submit">Search</button>
+
+</form>
+
+
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="10%" fxFlex.xs="100%" fxFlex.sm="33%" fxLayoutAlign="stretch" *ngFor="let movie of movies">
+      <mat-card class="mat-elevation-z4">
+
+        <img (click)="openMovie(movie.id)" class="clickable" mat-card-image src={{movie.poster}} />
+        <mat-card-header>
+          <mat-card-title>{{movie.title}}</mat-card-title>
+          <mat-card-subtitle>{{movie.year}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <style>
+            .ellipsis {
+              text-overflow: ellipsis;
+            }
+          </style>
+          <p class="overflow ellipsis">{{movie.overview}}</p>
+        </mat-card-content>
+        <mat-card-actions class="actions">
+                    <button mat-button (click)="addToUserList(movie.id)" class="btn btn-info"
+                      *ngIf="accountService.isLoggedIn && !accountService.userMovieIds.includes(movie.id)">Add to list</button>
+                    <button mat-button (click)="removeFromUserList(movie.id)" mat-raised-button color="warn"
+                      *ngIf="accountService.isLoggedIn && accountService.userMovieIds.includes(movie.id)">Remove from list</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
